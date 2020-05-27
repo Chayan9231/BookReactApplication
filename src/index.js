@@ -2,11 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import MyForm from './MyForm';
+import AllBookDetails from './AllBookDetails';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AllBookDetails />
+    {/* <MyForm /> */}
   </React.StrictMode>,
   document.getElementById('root')
 );
