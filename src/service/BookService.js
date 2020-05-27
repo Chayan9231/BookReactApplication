@@ -4,7 +4,8 @@ import ReactDOM from 'react-dom';
 
 
 
-const BOOK_API_URL = 'http://localhost:8080';
+// const BOOK_API_URL = 'http://localhost:8080';
+const BOOK_API_URL = 'https://bookapplicationpoc.herokuapp.com/';
 
 class BookService {
 

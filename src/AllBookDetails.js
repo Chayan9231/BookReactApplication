@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import BookService from './service/BookService';
+import './App.css';
 
 class AllBookDetails extends React.Component {
 
@@ -28,14 +29,12 @@ class AllBookDetails extends React.Component {
             )
     }
     render() {
-        const mystyle = {
-            border: "1px solid black",
-          };
+        
         return (
             <div className="container">
                 <h3>Book Details</h3>
                 <div className="container">
-                    <table style={mystyle} className="table">
+                    <table>
                         <thead>
                             <tr>
                                 <th>Book Id</th>

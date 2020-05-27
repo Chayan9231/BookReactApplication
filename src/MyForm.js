@@ -17,6 +17,7 @@ class MyForm extends React.Component {
       BookService.addBooks(book)
             .then(res => {
                 this.setState({message : 'Book added successfully.'});
+                this.props.history.push('/books');
             });
     }
     myChangeHandler = (e) => {
