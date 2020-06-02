@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/BookReactApplication/static/css/main.aaf689f3.chunk.css",
+    "main.js": "/BookReactApplication/static/js/main.f22d7f89.chunk.js",
+    "main.js.map": "/BookReactApplication/static/js/main.f22d7f89.chunk.js.map",
+    "runtime-main.js": "/BookReactApplication/static/js/runtime-main.7397783b.js",
+    "runtime-main.js.map": "/BookReactApplication/static/js/runtime-main.7397783b.js.map",
+    "static/js/2.6190dd27.chunk.js": "/BookReactApplication/static/js/2.6190dd27.chunk.js",
+    "static/js/2.6190dd27.chunk.js.map": "/BookReactApplication/static/js/2.6190dd27.chunk.js.map",
+    "index.html": "/BookReactApplication/index.html",
+    "precache-manifest.9a396540cd6e8d6b4bf3d13ed5ba53f6.js": "/BookReactApplication/precache-manifest.9a396540cd6e8d6b4bf3d13ed5ba53f6.js",
+    "service-worker.js": "/BookReactApplication/service-worker.js",
+    "static/css/main.aaf689f3.chunk.css.map": "/BookReactApplication/static/css/main.aaf689f3.chunk.css.map",
+    "static/js/2.6190dd27.chunk.js.LICENSE.txt": "/BookReactApplication/static/js/2.6190dd27.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "/BookReactApplication/static/media/logo.5d5d9eef.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7397783b.js",
+    "static/js/2.6190dd27.chunk.js",
+    "static/css/main.aaf689f3.chunk.css",
+    "static/js/main.f22d7f89.chunk.js"
+  ]
+}
