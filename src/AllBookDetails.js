@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import BookService from './service/BookService';
 import './App.css';
+import Popup from "reactjs-popup";
 
 class AllBookDetails extends React.Component {
 
@@ -10,13 +11,24 @@ class AllBookDetails extends React.Component {
         super(props)
         this.state = {
             books: [],
-            message: null
+            message: null,
         }
-        this.refreshCourses = this.refreshCourses.bind(this)
+        this.refreshCourses = this.refreshCourses.bind(this);
+        this.deleteBook=this.deleteBook.bind(this);
     }
 
     componentDidMount() {
         this.refreshCourses();
+    }
+
+    deleteBook(id) {
+        BookService.deleteBook(id)
+            .then(
+                response => {
+                    this.setState({ message: `Delete of book ${id} Successful` })
+                    this.refreshCourses()
+                }
+            )
     }
 
     refreshCourses() {
@@ -28,10 +40,11 @@ class AllBookDetails extends React.Component {
                 }
             )
     }
+   
+    
     render() {
-        
         return (
-            <div className="container">
+        <div className="container">         
                 <h3>Book Details</h3>
                 <div className="container">
                     <table>
@@ -41,6 +54,8 @@ class AllBookDetails extends React.Component {
                                 <th>Book Name</th>
                                 <th>Author Name</th>
                                 <th>Price</th>
+                                <th>Update</th>
+                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -52,7 +67,15 @@ class AllBookDetails extends React.Component {
                                             <td>{book.bookname}</td>
                                             <td>{book.author}</td>
                                             <td>{book.price}</td>
-                                        </tr>
+                                            <td><Popup
+    trigger={<button className="button"> Update</button>}
+    modal
+    closeOnDocumentClick
+  >
+    <span> Work in progress </span>
+  </Popup></td>
+    <td><button className="btn btn-warning" onClick={() => this.deleteBook(book.bookid)}>Delete</button></td>
+        </tr>
                                 )
                             }
                         </tbody>
