@@ -19,6 +19,9 @@ class AllBookDetails extends React.Component {
             books: [],
             message: null,
             open: false,
+            bookNameError:'',
+            authorNameError:'',
+            priceError:'',
             item:this.emptyBook
         }
         this.refreshCourses = this.refreshCourses.bind(this);
@@ -27,6 +30,30 @@ class AllBookDetails extends React.Component {
         this.closeModal = this.closeModal.bind(this);
     }
 
+    validate = () => {
+        let bookNameError= "";
+        let authorNameError = "";
+        let priceError ="" ;
+        const {item} = this.state;
+        if(item.price < 1){
+          priceError="Price is minimum 1"
+        }
+        if(item.bookname.length < 1){
+          console.log("hi")
+          bookNameError="Book Name should have atleast 1 characters"
+        }
+  
+        if(item.author.length < 2){
+          console.log("hi")
+          authorNameError="Author Name should have atleast 2 characters"
+        }
+  
+        if(priceError || bookNameError ||authorNameError){
+          this.setState({priceError,bookNameError,authorNameError});
+          return false;
+        }
+         return true;
+      } 
 
     fetchBookInfo(book){
         console.log(JSON.stringify(book));
@@ -57,6 +84,8 @@ class AllBookDetails extends React.Component {
     mySubmitHandler = (event) => { 
         console.log("*****"+this.state.item.bookid);
         event.preventDefault();
+        const isValid= this.validate();
+      if(isValid){
         const {item} = this.state;
         let book = {bookname: item.bookname, author: item.author, price: item.price};
         BookService.updateBooks(book,this.state.item.bookid)
@@ -64,6 +93,7 @@ class AllBookDetails extends React.Component {
                   this.setState({message : 'Book updated successfully.'});
                   window.location.reload(false);
               });
+            }
       }
       myChangeHandler = (e) => {
         const target = e.target;
@@ -92,9 +122,23 @@ class AllBookDetails extends React.Component {
             marginLeft: "50px",
             fontFamily: "Arial"
           };
+          const btnupdatestyle = {
+            color: "white",
+            backgroundColor: "#4CAF50",
+            padding: "6px 15px",
+            margin: "4px 10px",
+            fontFamily: "Arial"
+          };
+          const btndeletestyle = {
+            color: "white",
+            backgroundColor: "#f44336",
+            padding: "6px 15px",
+            margin: "4px 2px",
+            fontFamily: "Arial"
+          };
         return (
         <div className="container">         
-                <h3>Book Details</h3>
+                <h2 style={{color: "blue"}}>Book Details</h2>
                 <div className="container">
                     <table>
                         <thead>
@@ -115,8 +159,8 @@ class AllBookDetails extends React.Component {
                                             <td>{book.bookname}</td>
                                             <td>{book.author}</td>
                                             <td>{book.price}</td>
-                                            <td><button className="button" onClick={() => this.fetchBookInfo(book)}> Update</button>
-                                            <button className="btn btn-warning" onClick={() => this.deleteBook(book.bookid)}>Delete</button></td>
+                                            <td><button style={btnupdatestyle} onClick={() => this.fetchBookInfo(book)}> Update</button>
+                                            <button style={btndeletestyle} onClick={() => this.deleteBook(book.bookid)}>Delete</button></td>
                                     </tr>
                                 )
                             }
@@ -129,24 +173,27 @@ class AllBookDetails extends React.Component {
         <p>Book Name:</p>
         <input
           type='text' value={item.bookname}
-          name='bookname' autoComplete="off"
+          name='bookname' autoComplete="off" 
           onChange={this.myChangeHandler}
         />
+         <div style={{color:"red",fontSize:12}}>{this.state.bookNameError}</div>
         <p>Author Name:</p>
         <input
           type='text' value={item.author}
           name='author'
           onChange={this.myChangeHandler}
         />
+        <div style={{color:"red",fontSize:12}}>{this.state.authorNameError}</div>
         <p>Price:</p>
         <input
           type='text' value={item.price}
           name='price'
           onChange={this.myChangeHandler}
         />
+        <div style={{color:"red",fontSize:12}}>{this.state.priceError}</div>
         <br/>
         <br/>
-        <input type='submit' />
+        <input style={btnupdatestyle} type='submit' />
         </form>
           </div>
         </Popup>
