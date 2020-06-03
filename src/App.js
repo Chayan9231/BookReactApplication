@@ -5,7 +5,8 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-     <h1>Online Book Information</h1>,
+     <h1><u>Online Book Information</u></h1>
+     <h2>---- Created by Chayan Dutta</h2>
     </div>
   );
 }

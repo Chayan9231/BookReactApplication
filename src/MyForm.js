@@ -27,7 +27,7 @@ class MyForm extends React.Component {
       const mystyle = {
         color: "black",
         backgroundColor: "white",
-        marginLeft: "20px",
+        marginLeft: "220px",
         fontFamily: "Arial"
       };
       return (

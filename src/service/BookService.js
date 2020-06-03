@@ -23,7 +23,8 @@ class BookService {
     }
 
     updateBooks(book,id) {
-        return axios.delete(`${BOOK_API_URL}/updateBook/${id}`,book);
+        console.log(JSON.stringify(book))
+        return axios.put(`${BOOK_API_URL}/updateBook/${id}`,book);
     }
 }
 
